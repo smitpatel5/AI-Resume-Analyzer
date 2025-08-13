@@ -1,0 +1,1680 @@
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: "Mona Sans", ui-sans-serif, system-ui, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-dark-200: #475467;
+  --color-light-blue-100: #c1d3f81a;
+  --color-light-blue-200: #a7bff14d;
+
+  --color-badge-green: #d5faf1;
+  --color-badge-red: #f9e3e2;
+  --color-badge-yellow: #fceed8;
+
+  --color-badge-green-text: #254d4a;
+  --color-badge-red-text: #752522;
+  --color-badge-yellow-text: #73321b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Mona Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+/* Animated background gradients - FIXED */
+.animated-bg {
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe, #667eea);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+.animated-bg-2 {
+  background: linear-gradient(-45deg, #a8edea, #fed6e3, #ffecd2, #fcb69f, #ff9a9e, #fecfef, #a8edea);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite reverse;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Enhanced floating color orbs */
+.color-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  animation: float 8s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.color-orb:nth-child(1) {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  top: 5%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.color-orb:nth-child(2) {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(45deg, #4ecdc4, #44a08d);
+  top: 50%;
+  right: 5%;
+  animation-delay: 2s;
+}
+
+.color-orb:nth-child(3) {
+  width: 220px;
+  height: 220px;
+  background: linear-gradient(45deg, #45b7d1, #96c93d);
+  bottom: 5%;
+  left: 15%;
+  animation-delay: 4s;
+}
+
+.color-orb:nth-child(4) {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(45deg, #f093fb, #f5576c);
+  top: 30%;
+  left: 60%;
+  animation-delay: 6s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-30px) rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: translateY(15px) rotate(180deg) scale(0.9);
+  }
+  75% {
+    transform: translateY(-20px) rotate(270deg) scale(1.05);
+  }
+}
+
+/* Enhanced Upload Form Styling */
+.modern-upload-form {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.modern-upload-form::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  animation: formShine 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+.modern-upload-form::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, transparent 50%, rgba(118, 75, 162, 0.05) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes formShine {
+  0%, 100% {
+    transform: rotate(0deg) translateX(-100%);
+  }
+  50% {
+    transform: rotate(180deg) translateX(100%);
+  }
+}
+
+.modern-upload-form .form-div {
+  margin-bottom: 2rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.modern-upload-form .form-div:hover {
+  transform: translateX(5px);
+}
+
+.modern-upload-form label {
+  font-weight: 700;
+  color: #1f2937 !important; /* Dark text for visibility */
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+  display: block;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.modern-upload-form label::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.3s ease;
+}
+
+.modern-upload-form .form-div:focus-within label::after {
+  width: 100%;
+}
+
+.modern-upload-form .form-div:focus-within label {
+  color: #667eea;
+  transform: scale(1.02);
+}
+
+.modern-upload-form input,
+.modern-upload-form textarea {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  color: #1f2937 !important; /* Dark text for visibility */
+  font-family: inherit;
+  position: relative;
+}
+
+.modern-upload-form input::placeholder,
+.modern-upload-form textarea::placeholder {
+  color: #6b7280 !important; /* Visible placeholder text */
+}
+
+.modern-upload-form input:focus,
+.modern-upload-form textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+.modern-upload-form input:hover,
+.modern-upload-form textarea:hover {
+  border-color: #c7d2fe;
+  transform: translateY(-1px);
+}
+
+.modern-upload-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Enhanced submit button */
+.modern-upload-form .primary-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.25rem 2.5rem;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.modern-upload-form .primary-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.modern-upload-form .primary-button:hover::before {
+  left: 100%;
+}
+
+.modern-upload-form .primary-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.modern-upload-form .primary-button:active {
+  transform: translateY(-1px) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+/* Modern Resume Review Styling */
+.modern-resume-review {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  margin: 1rem;
+  color: #1f2937 !important; /* Ensure text is visible */
+}
+
+.modern-resume-review h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1f2937 !important;
+  margin-bottom: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Ensure all text in resume review is visible */
+.modern-resume-review * {
+  color: inherit;
+}
+
+.modern-resume-review h1,
+.modern-resume-review h2,
+.modern-resume-review h3,
+.modern-resume-review h4,
+.modern-resume-review h5,
+.modern-resume-review h6 {
+  color: #1f2937 !important;
+}
+
+.modern-resume-review p,
+.modern-resume-review span,
+.modern-resume-review div,
+.modern-resume-review li {
+  color: #374151 !important;
+}
+
+.score-display {
+  text-align: center;
+  margin-bottom: 4rem; /* Increased from 3rem */
+  padding: 2rem 0; /* Added padding for better spacing */
+}
+
+.score-number {
+  font-size: 5rem; /* Increased from 4rem */
+  font-weight: 900;
+  color: #667eea;
+  margin-bottom: 1rem; /* Increased from 0.5rem */
+  line-height: 1; /* Added for better text alignment */
+}
+
+.score-label {
+  font-size: 1.5rem; /* Increased from 1.25rem */
+  color: #6b7280;
+  font-weight: 600;
+  margin-bottom: 1rem; /* Added margin bottom */
+}
+
+.score-description {
+  color: #9ca3af;
+  max-width: 600px; /* Increased from 500px */
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 1.125rem; /* Added font size */
+}
+
+/* Category Cards */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Increased from 250px */
+  gap: 2rem; /* Increased from 1.5rem */
+  margin-bottom: 2rem;
+}
+
+.category-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem; /* Increased from 1.5rem */
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 120px; /* Added minimum height */
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: #667eea;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem; /* Increased from 1rem */
+}
+
+.category-name {
+  font-weight: 700;
+  color: #1f2937;
+  font-size: 1.25rem; /* Increased from 1.125rem */
+}
+
+.category-score {
+  font-size: 1.75rem; /* Increased from 1.5rem */
+  font-weight: 800;
+  color: #667eea;
+}
+
+.category-status {
+  font-size: 1rem; /* Increased from 0.875rem */
+  color: #6b7280;
+  font-weight: 600; /* Increased from 500 */
+  padding: 0.5rem 1rem; /* Added padding */
+  background: rgba(102, 126, 234, 0.1); /* Added subtle background */
+  border-radius: 0.5rem; /* Added border radius */
+  display: inline-block; /* Make it inline block */
+}
+
+/* ATS Section */
+.ats-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 16px;
+  padding: 2.5rem; /* Increased from 2rem */
+  margin-top: 3rem; /* Increased from 2rem */
+  margin-bottom: 3rem; /* Added margin bottom */
+}
+
+.ats-header {
+  text-align: center;
+  margin-bottom: 2.5rem; /* Increased from 2rem */
+}
+
+.ats-title {
+  font-size: 2rem; /* Increased from 1.75rem */
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem; /* Increased from 0.5rem */
+}
+
+.ats-score {
+  font-size: 3.5rem; /* Increased from 3rem */
+  font-weight: 900;
+  color: #667eea;
+  margin-bottom: 1rem; /* Increased from 0.5rem */
+}
+
+.ats-message {
+  font-size: 1.25rem; /* Increased from 1.125rem */
+  color: #059669;
+  font-weight: 600;
+  margin-bottom: 1.5rem; /* Increased from 1rem */
+}
+
+.ats-description {
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 2.5rem; /* Increased from 2rem */
+  font-size: 1.125rem; /* Added font size */
+}
+
+/* Tips List */
+.tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Increased from 1rem */
+}
+
+.tip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem; /* Increased from 0.75rem */
+  padding: 1.5rem; /* Increased from 1rem */
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease; /* Added transition */
+}
+
+.tip-item:hover {
+  transform: translateY(-2px); /* Added hover effect */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Added hover shadow */
+  border-color: #667eea; /* Added hover border color */
+}
+
+.tip-icon {
+  width: 24px; /* Increased from 20px */
+  height: 24px; /* Increased from 20px */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.tip-icon.check {
+  background: #10b981;
+  color: white;
+}
+
+.tip-icon.warning {
+  background: #f59e0b;
+  color: white;
+}
+
+.tip-text {
+  color: #374151;
+  line-height: 1.6;
+  flex: 1;
+  font-size: 1.125rem; /* Added font size */
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Navbar styles - FORCED POSITIONING */
+.navbar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 1rem 2rem !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  position: fixed !important; /* Changed from sticky to fixed */
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important; /* Increased z-index */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  /* Debug styles */
+  min-height: 80px !important;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button styles */
+.primary-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.primary-button:hover::before {
+  left: 100%;
+}
+
+.primary-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.primary-button:active {
+  transform: translateY(-1px) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+.signout-button {
+  background: transparent;
+  color: #667eea;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #667eea;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.signout-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.signout-button:hover::before {
+  left: 100%;
+}
+
+.signout-button:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+}
+
+.signout-button:active {
+  transform: translateY(-1px) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+/* Enhanced Auth Page Styling */
+.modern-auth-page {
+  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-auth-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+  animation: grainMove 20s linear infinite;
+}
+
+@keyframes grainMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(100px, 100px); }
+}
+
+.modern-auth-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.modern-auth-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  animation: cardShine 4s ease-in-out infinite;
+}
+
+@keyframes cardShine {
+  0%, 100% { left: -100%; }
+  50% { left: 100%; }
+}
+
+.modern-auth-card h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modern-auth-card h2 {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.modern-auth-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.25rem 2.5rem;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.modern-auth-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.modern-auth-button:hover::before {
+  left: 100%;
+}
+
+.modern-auth-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.modern-auth-button:active {
+  transform: translateY(-1px) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+.modern-auth-footer {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Enhanced Resume Cards with Better Structure */
+.resume-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  padding: 1.25rem; /* Reduced from 1.5rem */
+  text-decoration: none;
+  color: #1f2937 !important; /* Dark text for visibility */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  transform: perspective(1000px) rotateX(0deg);
+  height: fit-content;
+  min-height: 160px; /* Reduced from 200px */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure all text in resume cards is visible */
+.resume-card * {
+  color: inherit !important;
+}
+
+.resume-card h1,
+.resume-card h2,
+.resume-card h3,
+.resume-card h4,
+.resume-card h5,
+.resume-card h6 {
+  color: #1f2937 !important;
+}
+
+.resume-card p,
+.resume-card span,
+.resume-card div {
+  color: #374151 !important;
+}
+
+.resume-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.resume-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  animation: cardRotate 8s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.resume-card:hover::after {
+  opacity: 1;
+}
+
+.resume-card:hover::before {
+  left: 100%;
+}
+
+@keyframes cardRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.resume-card:hover {
+  transform: perspective(1000px) rotateX(5deg) translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  border-color: rgba(102, 126, 234, 0.5);
+}
+
+.resume-card:active {
+  transform: perspective(1000px) rotateX(2deg) translateY(-4px);
+  transition: all 0.1s ease;
+}
+
+.resume-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.gradient-border {
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-clip: padding-box;
+  border-radius: 1rem;
+  padding: 2px;
+}
+
+.gradient-border > div {
+  background: white;
+  border-radius: 0.875rem;
+  overflow: hidden;
+}
+
+/* Form styles */
+.form-div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-div label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-div input,
+.form-div textarea {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.form-div input:focus,
+.form-div textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Upload form specific styles */
+#upload-form {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Resume navigation - REMOVED DUPLICATE */
+
+/* Feedback section */
+.feedback-section {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  margin: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Auth styles */
+.auth-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Resume cards section - Fixed Layout */
+.resumes-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Reduced from 350px to 280px */
+  gap: 1.5rem; /* Reduced gap for tighter layout */
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Resume Review Page Layout Fixes - COMPLETELY REWRITTEN */
+.resume-content-wrapper {
+  width: 100%;
+  padding-top: 1rem;
+  position: relative;
+  z-index: 2;
+  display: block; /* Ensure block layout */
+}
+
+.resume-review-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: calc(100vh - 160px);
+  position: relative;
+  margin-top: 1rem;
+  clear: both; /* Clear any floating elements */
+}
+
+.resume-image-section {
+  flex: 0 0 40%;
+  position: sticky;
+  top: 120px;
+  height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.resume-content-section {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+}
+
+/* Resume Navigation - COMPLETELY REWRITTEN */
+.resume-nav {
+  position: sticky !important;
+  top: 80px !important;
+  z-index: 20 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  padding: 1rem 2rem !important;
+  margin: 0 -2rem 0 -2rem !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  width: calc(100% + 4rem) !important;
+  left: 0 !important;
+  right: 0 !important;
+  display: block !important;
+  float: none !important;
+  clear: both !important;
+}
+
+.back-button {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  text-decoration: none !important;
+  color: #374151 !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.5rem !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(102, 126, 234, 0.2) !important;
+  float: none !important;
+  clear: both !important;
+}
+
+.back-button:hover {
+  background: rgba(102, 126, 234, 0.1) !important;
+  border-color: rgba(102, 126, 234, 0.4) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2) !important;
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 1024px) {
+  .resume-review-container {
+    flex-direction: column;
+  }
+  
+  .resume-image-section {
+    flex: none;
+    height: auto;
+    position: relative;
+    top: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .resume-content-section {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .main-section {
+    padding: 0 1rem;
+    padding-top: 1rem;
+  }
+  
+  .page-heading h1 {
+    font-size: 2rem;
+  }
+  
+  .resumes-section {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .resume-card {
+    min-height: 180px;
+  }
+  
+  .resume-review-container {
+    padding: 0;
+  }
+  
+  .resume-image-section,
+  .resume-content-section {
+    padding: 1rem;
+  }
+
+  .feedback-section {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+
+  .modern-upload-form {
+    padding: 2rem;
+    margin: 1rem;
+  }
+  
+  .modern-resume-review {
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+  
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .score-number {
+    font-size: 3rem;
+  }
+  
+  .modern-resume-review h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Main section styles */
+.main-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  min-height: calc(100vh - 80px);
+  padding-top: 6rem !important; /* Increased to account for fixed navbar */
+}
+
+.page-heading {
+  text-align: center;
+  color: white;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 3rem; /* Add bottom margin for better separation */
+}
+
+.page-heading h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #fff, #f0f8ff, #fff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShine 3s ease-in-out infinite;
+}
+
+@keyframes textShine {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.page-heading h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Resume cards section - Fixed Layout */
+.resumes-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* NEW RESUME PAGE LAYOUT - NO CONFLICTS */
+.resume-page-layout {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.resume-page-layout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+  animation: gradientShift 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* MAIN PAGE LAYOUT - For homepage and upload page */
+.main-page-layout {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow-x: hidden;
+  display: block; /* NOT flex - this is the key fix */
+}
+
+.main-page-layout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+  animation: gradientShift 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.resume-top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.resume-main-content {
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.resume-split-layout {
+  display: flex;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 120px);
+}
+
+.resume-left-panel {
+  flex: 0 0 40%;
+  position: sticky;
+  top: 100px;
+  height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem; /* Reduced padding to maximize space */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.resume-right-panel {
+  flex: 1;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+}
+
+/* Responsive for new layout */
+@media (max-width: 1024px) {
+  .resume-split-layout {
+    flex-direction: column;
+  }
+  
+  .resume-left-panel {
+    flex: none;
+    height: auto;
+    position: relative;
+    top: auto;
+  }
+  
+  .resume-right-panel {
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 768px) {
+  .resume-main-content {
+    padding: 1rem;
+  }
+  
+  .resume-split-layout {
+    gap: 1rem;
+  }
+  
+  .resume-left-panel,
+  .resume-right-panel {
+    padding: 1rem;
+  }
+}
+
+/* File uploader text visibility */
+.gradient-border {
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-clip: padding-box;
+  border-radius: 1rem;
+  padding: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.gradient-border > div {
+  background: white;
+  border-radius: 0.875rem;
+  overflow: hidden;
+  position: relative;
+  padding: 2rem;
+  color: #1f2937 !important; /* Ensure text is visible */
+}
+
+/* File uploader specific styles */
+.gradient-border p {
+  color: #374151 !important; /* Dark text for visibility */
+}
+
+.gradient-border .font-semibold {
+  color: #1f2937 !important; /* Darker text for emphasis */
+}
+
+/* Accordion Content Spacing */
+.accordion-content {
+  padding: 2rem; /* Increased padding for better content spacing */
+}
+
+/* Category Content Spacing */
+.category-content {
+  padding: 1.5rem 0; /* Added padding for better spacing */
+}
+
+.category-content .grid {
+  gap: 1.5rem; /* Increased gap between grid items */
+  margin-bottom: 2rem; /* Increased margin bottom */
+}
+
+.category-content .flex {
+  gap: 1.5rem; /* Increased gap between flex items */
+}
+
+.category-content .rounded-xl {
+  padding: 1.5rem; /* Increased padding for better content spacing */
+  margin-bottom: 1rem; /* Added margin between items */
+}
+
+/* Enhanced Accordion Styling */
+.accordion-item {
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.accordion-header {
+  padding: 1rem 0;
+  border-bottom: 1px solid #f3f4f6;
+  margin-bottom: 0.5rem;
+}
+
+.accordion-content {
+  padding: 1rem 0;
+  background: rgba(249, 250, 251, 0.3);
+  border-radius: 0.5rem;
+  margin: 0 0.5rem;
+}
+
+/* Minimal Spacing for Detailed Analysis */
+.modern-resume-review h3 {
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+.modern-resume-review .flex.flex-col.gap-10 {
+  gap: 1.5rem !important;
+}
+
+/* Make Score Overview Section Smaller */
+.modern-resume-review .score-display {
+  padding: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.modern-resume-review .score-display h2 {
+  font-size: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.modern-resume-review .score-display .text-6xl {
+  font-size: 2.5rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.modern-resume-review .score-display .text-lg {
+  font-size: 0.875rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Make Category Grid Smaller */
+.modern-resume-review .category-grid {
+  gap: 0.75rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.modern-resume-review .category-card {
+  padding: 0.75rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.modern-resume-review .category-card h3 {
+  font-size: 1rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.modern-resume-review .category-card .text-2xl {
+  font-size: 1.25rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Make ATS Section Smaller */
+.modern-resume-review .ats-section {
+  padding: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.modern-resume-review .ats-section h3 {
+  font-size: 1.25rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.modern-resume-review .ats-section .text-2xl {
+  font-size: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.modern-resume-review .tips-list {
+  gap: 0.5rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.modern-resume-review .tips-list li {
+  padding: 0.5rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Reduce Main Heading Size */
+.modern-resume-review h1.text-4xl {
+  font-size: 2rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.modern-resume-review .text-xl {
+  font-size: 1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Category Header Spacing */
+.modern-resume-review .flex.flex-row.gap-4.items-center.py-6 {
+  padding: 1rem 0.5rem !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-radius: 0.5rem !important;
+  margin-bottom: 0.75rem !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+/* Content Spacing */
+.modern-resume-review .px-4.py-3 {
+  padding: 1rem !important;
+}
+
+.modern-resume-review .grid {
+  gap: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.modern-resume-review .flex.flex-col.gap-6 {
+  gap: 1rem !important;
+}
+
+.modern-resume-review .flex.flex-col.gap-6 > div {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Tip Items Spacing */
+.modern-resume-review .bg-gray-50.rounded-lg {
+  margin-bottom: 0.5rem !important;
+  padding: 0.75rem !important;
+}
+
+.modern-resume-review .rounded-xl.p-6 {
+  margin-bottom: 0.75rem !important;
+  padding: 1rem !important;
+}
+
+/* Text Spacing */
+.modern-resume-review p {
+  margin-bottom: 0.75rem !important;
+  line-height: 1.5 !important;
+}
+
+.modern-resume-review .text-lg {
+  margin-bottom: 1rem !important;
+}
+
+.modern-resume-review .text-base {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Detailed Analysis Section Spacing */
+.detailed-analysis-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+/* Make Logo and Back Button More Attractive */
+.navbar .text-2xl.font-bold {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.025em !important;
+  transition: all 0.3s ease !important;
+}
+
+.navbar .text-2xl.font-bold:hover {
+  transform: scale(1.05) !important;
+  filter: brightness(1.1) !important;
+}
+
+/* Enhanced Back to Homepage Button */
+.resume-nav .bg-blue-600 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.resume-nav .bg-blue-600::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+  transition: left 0.5s ease !important;
+}
+
+.resume-nav .bg-blue-600:hover::before {
+  left: 100% !important;
+}
+
+.resume-nav .bg-blue-600:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4) !important;
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%) !important;
+}
+
+.resume-nav .bg-blue-600:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+}
+
+/* Enhanced Button Text */
+.resume-nav .bg-blue-600 .text-white {
+  font-weight: 600 !important;
+  letter-spacing: 0.025em !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Alternative: If the button uses different classes */
+.back-button, .resume-nav button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 0.5rem !important;
+  padding: 0.75rem 1.5rem !important;
+}
+
+.back-button::before, .resume-nav button::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+  transition: left 0.5s ease !important;
+}
+
+.back-button:hover::before, .resume-nav button:hover::before {
+  left: 100% !important;
+}
+
+.back-button:hover, .resume-nav button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4) !important;
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%) !important;
+}
+
+.back-button:active, .resume-nav button:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+}
+
+
